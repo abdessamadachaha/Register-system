@@ -24,6 +24,15 @@
             ]);
         }
 
+        public function findByEmail(string $email): object | false {    
+            $stmt = $this->database->prepare("
+                SELECT * FROM users WHERE email = :email
+            ");
+            $stmt->execute(["email" => $email]);
+
+            return $stmt->fetch();
+        }
+
         
     }
 ?>
