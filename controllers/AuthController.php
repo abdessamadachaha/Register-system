@@ -13,6 +13,44 @@
             require __DIR__. "/../views/auth/signup.php";
         }
 
+        public function showLogin(): void {
+            require __DIR__. "/../views/auth/login.php";
+        }
+
+        public function login(): void {
+            if (isset($_POST['login'])) {
+                $email = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL);
+                $passord = trim($_POST['password']);
+
+                if (!empty($email) && !empty($passord)) {
+                    $user = $this->user_model->findByEmail($email);
+                    if ($user !== false && password_verify($passord, $user->password)) {
+                        session_regenerate_id(true);
+                        $_SESSION['user_id'] = $user->id;
+                        header("Location: /register/Register-system/index.php?action=dashbord");
+                        exit;
+                    }
+                } 
+            }
+        }
+
+        public function Dashbord(): void {
+            if (!isset($_SESSION['user_id'])) {
+                header('Location: /register/Register-system/index.php?action=login');
+                exit;
+            }
+
+            $userId = (int) $_SESSION['user_id'];
+            $user = $this->user_model->findById($userId);
+            
+            if ($user === false) {
+                 header("Location: /register/Register-system/index.php?action=login");
+                exit;
+            }
+
+            require __DIR__ . "/../views/dashbord.php";
+        }
+
         public function store(): void {
             $message = [];
             if (isset($_POST['sign'])) {

@@ -39,6 +39,17 @@
             cursor: pointer;
             font-size: 16px;
         }
+
+        .have {
+            margin-top: 12px;
+            text-align: center;
+
+        }
+
+        .have span a {
+            color: blue;
+            text-decoration: none;
+        }
      
         button:hover { background: #1f55b5; }
     </style>
@@ -55,6 +66,13 @@
     
 
     <button type="submit" name="login">Login</button>
+
+    <div class="have">
+        I don't have an account yet
+        <span>
+            <a href="/register/Register-system/index.php?action=signup">SignUp</a>
+        </span>
+    </div>
 </form>
 
 <?php 

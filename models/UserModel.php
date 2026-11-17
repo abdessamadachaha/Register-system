@@ -33,6 +33,15 @@
             return $stmt->fetch();
         }
 
+        public function findById(int $id): object | false {    
+            $stmt = $this->database->prepare("
+                SELECT * FROM users WHERE id = :id
+            ");
+            $stmt->execute(["id" => $id]);
+
+            return $stmt->fetch();
+        }
+
         
     }
 ?>

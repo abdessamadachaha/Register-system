@@ -49,6 +49,17 @@
             top: 30px;
         }
         button:hover { background: #1f55b5; }
+
+        .have {
+            margin-top: 12px;
+            text-align: center;
+
+        }
+
+        .have span a {
+            color: blue;
+            text-decoration: none;
+        }
     </style>
     <?php 
         if (!empty($message)) {
@@ -82,6 +93,12 @@
     </select>
 
     <button type="submit" name="sign">Sign Up</button>
+    <div class="have">
+        I already have an account
+        <span>
+            <a href="/register/Register-system/index.php?action=login">login</a>
+        </span>
+    </div>
 </form>
 
 <?php 

@@ -1,5 +1,6 @@
 <?php 
     declare(strict_types = 1);
+    session_start();
 
     require_once __DIR__. "/config/database.php";
     require_once __DIR__. "/models/UserModel.php";
@@ -15,6 +16,7 @@
         "/register/Register-system/index.php?action=signup" => [$authController, "showSignup"],
         "/register/Register-system/index.php?action=store" => [$authController, "store"],
         "/register/Register-system/index.php?action=login" => [$authController, "login"],
+        "/register/Register-system/index.php?action=dashbord" => [$authController, "Dashbord"],
 
     ];
 
